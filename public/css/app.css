@@ -16997,6 +16997,10 @@ readers do not read off random characters that represent icons */
   padding-right: 20px;
 }
 
+#app > main.full {
+  grid-area: 2/1/3/3;
+}
+
 #app > main .table th,
 #app > main .table tr {
   vertical-align: baseline;

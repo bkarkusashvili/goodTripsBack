@@ -18,8 +18,14 @@
 <body>
 	<div id="app">
 		@include('shared.header')
-		@include('shared.aside')
-		<main>
+		@auth
+			@include('shared.aside')
+		@endauth
+		@auth
+			<main>
+		@else
+			<main class="full">
+		@endauth
 			@yield('content')
 		</main>
 	</div>

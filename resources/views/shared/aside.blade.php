@@ -2,7 +2,8 @@
     $menu = [
         'user' => [
             'title' => 'Users',
-            'icon' => 'fas fa-users'
+            'icon' => 'fas fa-users',
+            'role' => true
         ],
         'food' => [
             'title' => 'Foods',
@@ -38,14 +39,16 @@
 <aside>
     <div class="list-group">
         @foreach ($menu as $key => $item)
-            <a 
-                href="{{route($key.'.index')}}" 
-                class="list-group-item list-group-item-action
-                {{request()->is($key.'*') ? ' active':''}}"
-            >
-                <i class="{{$item['icon']}}"></i>    
-                {{$item['title']}}
-            </a>
+            @if (!isset($item['role']) || Auth::user()->isAdmin())
+                <a 
+                    href="{{route($key.'.index')}}" 
+                    class="list-group-item list-group-item-action
+                    {{request()->is($key.'*') ? ' active':''}}"
+                >
+                    <i class="{{$item['icon']}}"></i>    
+                    {{$item['title']}}
+                </a>
+            @endif
         @endforeach
     </div>
 </aside>
