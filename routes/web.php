@@ -17,5 +17,11 @@ Route::middleware(['auth'])->group(function() {
     
     Route::resource('user', 'UserController');
     Route::resource('food', 'FoodController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('service', 'ServiceController');
+    Route::resource('city', 'CityController');
+    Route::resource('place', 'PlaceController');
+    Route::resource('hotel', 'HotelController');
+    Route::resource('restaurant', 'RestaurantController');
 
 });

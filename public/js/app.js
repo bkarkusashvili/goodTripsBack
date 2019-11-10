@@ -36922,6 +36922,14 @@ __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./coverImage */ "./resources/js/coverImage.js");
+
+__webpack_require__(/*! ./galleryImage */ "./resources/js/galleryImage.js");
+
+tinymce.init({
+  selector: 'textarea.tinymce'
+});
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -36966,6 +36974,69 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/coverImage.js":
+/*!************************************!*\
+  !*** ./resources/js/coverImage.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('.cover-image input[type="file"]').on('change', function (e) {
+  var image = e.target.files[0];
+  var fr = new FileReader();
+
+  fr.onload = function (e) {
+    $('.cover-image img').attr('src', e.target.result);
+  };
+
+  fr.readAsDataURL(image);
+});
+
+/***/ }),
+
+/***/ "./resources/js/galleryImage.js":
+/*!**************************************!*\
+  !*** ./resources/js/galleryImage.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('.gallery-image input[type="file"]').on('change', function (e) {
+  $('.gallery-image-cont').html('');
+  var images = e.target.files;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = images[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var image = _step.value;
+      var fr = new FileReader();
+
+      fr.onload = function (e) {
+        $('.gallery-image-cont').append("<img src=\"".concat(e.target.result, "\" />"));
+      };
+
+      fr.readAsDataURL(image);
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+        _iterator["return"]();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+});
 
 /***/ }),
 

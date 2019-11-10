@@ -8,6 +8,30 @@
             'title' => 'Foods',
             'icon' => 'fas fa-hamburger'
         ],
+        'category' => [
+            'title' => 'Food Categories',
+            'icon' => 'fas fa-filter'
+        ],
+        'service' => [
+            'title' => 'Services',
+            'icon' => 'fas fa-concierge-bell'
+        ],
+        'city' => [
+            'title' => 'Cities',
+            'icon' => 'fas fa-globe-europe'
+        ],
+        'place' => [
+            'title' => 'Places',
+            'icon' => 'fas fa-map-marker-alt'
+        ],
+        'hotel' => [
+            'title' => 'Hotels',
+            'icon' => 'fas fa-hotel'
+        ],
+        'restaurant' => [
+            'title' => 'Restaurants',
+            'icon' => 'fas fa-utensils'
+        ],
     ];
 @endphp
 

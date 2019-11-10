@@ -31,8 +31,12 @@
             @foreach ($data['rows'] as $row)
                 <tr>
                     @foreach ($data['headers'] as $key => $item)
-                        @if ($key !== 'actions')
-                            <th scope="row">{{$row->$key}}</th>
+                        @if ($key === 'image')
+                            <th scope="row">
+                                <img class="index-cover-image" src="{{url('upload', $row->$key->url)}}" />
+                            </th>
+                        @elseif($key !== 'actions')
+                            <th scope="row">{!! $row->$key !!}</th>
                         @else
                             <th scope="row" class="d-flex">
                                 <a 

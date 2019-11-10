@@ -2,22 +2,21 @@
 
 namespace App;
 
+use App\Image;
 use Illuminate\Database\Eloquent\Model;
 
-class Food extends Model
+class Place extends Model
 {
-    protected $fillable = [
-        'title_ka', 'title_en', 'price', 'trending', 'image_id', 'category_id',
-    ];
+    protected $fillable = ['title_ka', 'title_en', 'address_ka', 'address_en', 'description_ka', 'description_en', 'location', 'gallery', 'image_id', 'trending'];
 
     public function image()
     {
         return $this->hasOne('App\Image', 'id', 'image_id');
     }
 
-    public function getCategoryAttribute($data)
+    public function getGalleryAttribute($value)
     {
-        return $this->hasOne('App\Category', 'id', 'category_id')->first()->title_ka;
+        return Image::select('url')->find(json_decode($value));
     }
 
     public function getTrendingIndexAttribute()
@@ -32,5 +31,4 @@ class Food extends Model
     {
         $this->attributes['trending'] = ['on' => true, 'off' => false][$value];
     }
-    
 }

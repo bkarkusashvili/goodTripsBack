@@ -10,10 +10,20 @@
         grid-area: 1 / 1 / 2 / 3;
     }
 
-
     & > main {
         grid-area: 2 / 2 / 3 / 3;
         padding-right: 20px;
+
+        .table {
+
+            th, tr {
+                vertical-align: baseline;
+            }
+        }
+
+        textarea.description {
+            height: 300px;            
+        }
     }
 
     & > aside {

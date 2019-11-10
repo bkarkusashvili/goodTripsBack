@@ -16997,6 +16997,15 @@ readers do not read off random characters that represent icons */
   padding-right: 20px;
 }
 
+#app > main .table th,
+#app > main .table tr {
+  vertical-align: baseline;
+}
+
+#app > main textarea.description {
+  height: 300px;
+}
+
 #app > aside {
   background: white;
   border-radius: 0 10px 0 0;
@@ -17011,5 +17020,42 @@ readers do not read off random characters that represent icons */
   border-bottom-width: 1px;
   margin-bottom: 0;
   font-weight: bold;
+}
+
+.cover-image img {
+  background: #cacaca;
+  border-radius: 10px;
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.index-cover-image {
+  background: #cacaca;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 150px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.gallery-image .gallery-image-cont {
+  display: -webkit-box;
+  display: flex;
+  margin: 0 -10px;
+  flex-wrap: wrap;
+}
+
+.gallery-image .gallery-image-cont img {
+  width: calc(25% - 20px);
+  margin: 15px 10px;
+  height: 150px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 0px #00000045;
 }
 

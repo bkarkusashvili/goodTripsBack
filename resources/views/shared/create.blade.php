@@ -9,17 +9,14 @@
         </ol>
     </nav>
     <h3 class="mb-3">Users</h3>
-    <form method="POST" class="row" action="{{isset($data['action']) ? route($data['action']) : route($data['model'].'.store')}}">
+    <form method="POST" enctype="multipart/form-data" class="row" action="{{isset($data['action']) ? route($data['action']) : route($data['model'].'.store')}}">
         @csrf
         <div class="col-8">
             <div class="row">
                 @foreach ($data['main'] as $item)
                     @switch($item['type'])
-                        @case('textarea')
-                        @case('image')
-                        @case('radio')
-                        @case('checkbox')
-                            @include('shared.inputs.checkbox', ['input' => $item])
+                        @case(in_array($item['type'], ['textarea', 'image', 'select', 'radio', 'checkbox', 'file', 'gallery', 'map']))
+                            @include('shared.inputs.'.$item['type'], ['input' => $item])
                             @break
                         @default
                             @include('shared.inputs.text', ['input' => $item])
@@ -34,14 +31,11 @@
                 </div>
                 @foreach ($data['aside'] as $item)
                     @switch($item['type'])
-                        @case('textarea')
-                        @case('image')
-                        @case('radio')
-                        @case('checkbox')
-                            @include('shared.inputs.checkbox', ['input' => $item])
+                        @case(in_array($item['type'], ['textarea', 'image', 'select', 'radio', 'checkbox', 'file', 'gallery', 'map']))
+                            @include('shared.inputs.'.$item['type'], ['input' => $item])
                             @break
-                        @default
-                            @include('shared.inputs.text', ['input' => $item])
+                    @default
+                        @include('shared.inputs.text', ['input' => $item])
                     @endswitch
                 @endforeach
             </div>

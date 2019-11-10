@@ -10,7 +10,7 @@
     </nav>
     <h3 class="mb-3">Users</h3>
     @include('flash::message')
-    <form method="POST" class="row" 
+    <form method="POST" class="row" enctype="multipart/form-data" 
         action="{{isset($data['action']) ? route($data['action'], $data['response']->id) : route($data['model'].'.update', $data['response']->id)}}">
         @csrf
         @method('PUT')
@@ -22,11 +22,8 @@
                         $item['value'] = isset($data['response']->$inputName) ? $data['response']->$inputName : null;
                     @endphp
                     @switch($item['type'])
-                        @case('textarea')
-                        @case('image')
-                        @case('radio')
-                        @case('checkbox')
-                            @include('shared.inputs.checkbox', ['input' => $item])
+                        @case(in_array($item['type'], ['textarea', 'image', 'select', 'radio', 'checkbox', 'file', 'gallery', 'map']))
+                            @include('shared.inputs.'.$item['type'], ['input' => $item])
                             @break
                         @default
                             @include('shared.inputs.text', ['input' => $item])
@@ -40,12 +37,13 @@
                     <button type="submit" class="btn btn-primary btn-block">Edit</button>
                 </div>
                 @foreach ($data['aside'] as $item)
+                    @php
+                        $inputName = $item['name'];
+                        $item['value'] = isset($data['response']->$inputName) ? $data['response']->$inputName : null;
+                    @endphp
                     @switch($item['type'])
-                        @case('textarea')
-                        @case('image')
-                        @case('radio')
-                        @case('checkbox')
-                            @include('shared.inputs.checkbox', ['input' => $item])
+                        @case(in_array($item['type'], ['textarea', 'image', 'select', 'radio', 'checkbox', 'file', 'gallery', 'map']))
+                            @include('shared.inputs.'.$item['type'], ['input' => $item])
                             @break
                         @default
                             @include('shared.inputs.text', ['input' => $item])

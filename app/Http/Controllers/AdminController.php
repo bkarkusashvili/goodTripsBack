@@ -59,9 +59,8 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $validData = $request->validate($this->createValidators);
-
+        
         $validData = $this->beforeStore($validData);
-
         $this->model::create($validData);
 
         return redirect()->route($this->modelName.'.index');
@@ -91,9 +90,7 @@ class AdminController extends Controller
         $this->createData['aside'] = isset($this->asideInputs) ? $this->asideInputs : [];
 
         $item = $this->model::select($this->select)->findOrFail($id);
-
         $this->createData['response'] = $item;
-
         $this->createData = $this->updateCreateData($this->createData);
 
         return view('shared.edit', ['data' => $this->createData]);
@@ -108,12 +105,13 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validData = $request->validate($this->updateValidators);
-
+        $validData = $request->validate(isset($this->updateValidators) ? $this->updateValidators : $this->createValidators);
+        
+        $this->model = $this->model::findOrFail($id);
         $validData = $this->beforeUpdate($validData);
-
-        $this->model::findOrFail($id)->update($validData);
-
+        
+        $this->model->update($validData);
+        
         flash('მონაცმები განახლდა')->important();
 
         return redirect()->back();

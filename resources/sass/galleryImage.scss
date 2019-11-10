@@ -1,0 +1,18 @@
+.gallery-image {
+
+    .gallery-image-cont {
+        display: flex;
+        margin: 0 -10px;
+        flex-wrap: wrap;
+
+        img {
+            width: calc(25% - 20px);
+            margin: 15px 10px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px 0px #00000045;
+        }
+    }
+
+}
