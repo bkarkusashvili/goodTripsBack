@@ -21,8 +21,8 @@ class CreatePlacesTable extends Migration
             $table->string('address_en');
             $table->text('description_ka');
             $table->text('description_en');
-            $table->json('location')->nullable();
-            $table->json('gallery')->nullable();
+            $table->text('location')->nullable();
+            $table->text('gallery')->nullable();
             $table->integer('image_id');
             $table->boolean('trending')->default(false);
             $table->timestamps();

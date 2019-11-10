@@ -23,12 +23,12 @@ class CreateHotelsTable extends Migration
             $table->text('description_en');
             $table->string('author_ka')->nullable();
             $table->string('author_en')->nullable();
-            $table->json('services')->nullable();
+            $table->text('services')->nullable();
             $table->string('website')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
-            $table->json('location')->nullable();
-            $table->json('gallery')->nullable();
+            $table->text('location')->nullable();
+            $table->text('gallery')->nullable();
             $table->integer('image_id');
             $table->timestamps();
         });

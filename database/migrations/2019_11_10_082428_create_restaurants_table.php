@@ -26,10 +26,10 @@ class CreateRestaurantsTable extends Migration
             $table->string('website')->nullable();
             $table->string('email')->nullable();
             $table->string('mobile')->nullable();
-            $table->json('location')->nullable();
-            $table->json('services')->nullable();
-            $table->json('foods')->nullable();
-            $table->json('gallery')->nullable();
+            $table->text('location')->nullable();
+            $table->text('services')->nullable();
+            $table->text('foods')->nullable();
+            $table->text('gallery')->nullable();
             $table->integer('image_id');
             $table->timestamps();
         });
